@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'pet-project-yandex-map';
+  latitude = 55.752922;
+  longitude = 37.621984;
 }
