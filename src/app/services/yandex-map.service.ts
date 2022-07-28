@@ -63,7 +63,12 @@ export class YandexMapService {
     });
     // Слушаем событие окончания перетаскивания на метке.
     mark.events.add('dragend', () => {
+      this.localeStorage.addItem(mark.geometry.getCoordinates())
       this.getAddress(mark, mark.geometry.getCoordinates());
+    });
+    // Слушаем событие начало перетаскивания на метке.
+    mark.events.add('dragstart', () => {
+      this.localeStorage.removeItem(mark.geometry.getCoordinates())
     });
   }
 
