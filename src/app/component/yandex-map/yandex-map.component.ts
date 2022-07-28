@@ -1,5 +1,6 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {YandexMapService} from "../../services/yandex-map.service";
+import {LocalStorageService} from "../../services/local-storage.service";
 
 
 @Component({
@@ -14,10 +15,11 @@ export class YandexMapComponent implements OnInit {
   @ViewChild('yamaps')
   el!: ElementRef;
 
-  constructor(private yandexMap: YandexMapService) {
+  constructor(private yandexMap: YandexMapService, private localStorage: LocalStorageService) {
   }
 
   ngOnInit(): void {
-    this.yandexMap.initMap(this.latitude, this.longitude)
+    this.localStorage.getAllLocalStorage();
+    this.yandexMap.initMap(this.latitude, this.longitude);
   }
 }

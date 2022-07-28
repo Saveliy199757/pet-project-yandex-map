@@ -5,10 +5,12 @@ import { Injectable } from '@angular/core';
 })
 export class LocalStorageService {
 
-  coords: Array<any>;
+  coords: Array<any> = [];
   key: string = "coords"
 
-  constructor() {
+  constructor() {}
+
+  getAllLocalStorage() {
     this.coords = JSON.parse(localStorage.getItem(this.key) as string) || [];
   }
 
@@ -18,7 +20,8 @@ export class LocalStorageService {
   }
 
   removeItem(item: any) {
-    localStorage.setItem(this.key, JSON.stringify(this.coords.filter(el => el !== item)))
+    this.coords = this.coords.filter(el => el !== item);
+    localStorage.setItem(this.key, JSON.stringify(this.coords))
   }
 
 }
